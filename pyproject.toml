@@ -1,0 +1,19 @@
+[project]
+name = "test-student-performance"
+version = "0.1.0"
+description = "Тестовое задание на позицию Junior Python разработчик в WorkMate"
+authors = [
+    {name = "Anton Ivanov",email = "sibiry-k@yandex.ru"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "ruff (>=0.13.1,<0.14.0)",
+    "tabulate (>=0.9.0,<0.10.0)",
+    "pre-commit (>=4.3.0,<5.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
