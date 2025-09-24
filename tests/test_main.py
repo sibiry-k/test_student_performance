@@ -12,3 +12,6 @@ def test_read_students_results_valid(csv_valid):
     with patch("builtins.open", mock_file):
         data = read_students_results("test_students.csv")
         assert isinstance(data, list)
+        for row in data:
+            assert "student_name" in row, "Отсутствует столбец 'student_name'"
+            assert "grade" in row, "Отсутствует столбец 'grade'"

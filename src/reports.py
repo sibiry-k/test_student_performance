@@ -6,8 +6,15 @@ def report_students_performance(data):
 
     # Формируем словарь {Студент: список оценок}
     for row in data:
-        student_name = row["student_name"]
-        grade = int(row["grade"])
+        if "student_name" in row:
+            student_name = row["student_name"]
+        else:
+            raise ValueError("Отсутствует столбец 'student_name'")
+        if "grade" in row:
+            grade = int(row["grade"])
+        else:
+            raise ValueError("Отсутствует столбец 'grade'")
+
         table.setdefault(student_name, []).append(grade)
 
     # Формируем итоговый словарь {Студент: средняя оценка}
@@ -22,7 +29,7 @@ def report_students_performance(data):
         reverse=True,
     )
 
-    # Добавляем счётчик
+    # Добавляем счётчик строки
     result_rows = [
         (i, student, avg) for i, (student, avg) in enumerate(rows, start=1)
     ]

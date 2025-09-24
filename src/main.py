@@ -22,8 +22,13 @@ def main():
     args = arg_parser.parse_args()
 
     if args.files is None:
-        print("Проверьте указание атрибутов. Например: '--files students1.csv")
+        print("Проверьте аргументы. Например: '--files students1.csv")
         return
+
+    for filename in args.files:
+        if Path(filename).suffix.lower() != ".csv":
+            print("Скрипт обрабатывает только CSV-файлы.")
+            return
 
     if args.report == "students-performance":
         common_data = []
