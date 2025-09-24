@@ -31,3 +31,7 @@ select = ["E", "F", "I"]
 
 [tool.ruff.format]
 indent-style = "space"
+
+[tool.poetry.group.dev.dependencies]
+pytest-cov = "^7.0.0"
+

@@ -20,17 +20,24 @@ def read_students_results(filename):
 def main():
     arg_parser = config_arg_parser()
     args = arg_parser.parse_args()
+
+    if args.files is None:
+        print("Проверьте указание атрибутов. Например: '--files students1.csv")
+        return
+
     if args.report == "students-performance":
         common_data = []
         for filename in args.files:
             file_path = DATA_FOLDER / filename
             input_data = read_students_results(file_path)
-            common_data.extend(input_data)
+            if input_data:
+                common_data.extend(input_data)
+            else:
+                return
         report_students_performance(common_data)
     else:
-        print(
-            "Укажите вариант отчета. Например: '--report students-performance'"
-        )
+        print("Проверьте аргументы. Например: '--report students-performance'")
+        return
 
 
 if __name__ == "__main__":
