@@ -140,3 +140,23 @@ class TestMainModule:
         mock_print.assert_called_once_with(
             "Проверьте аргументы. Например: '--report students-performance'"
         )
+
+    @patch("main.config_arg_parser")
+    @patch("main.read_students_results")
+    @patch("main.report_students_performance")
+    def test_main_right_work(
+        self, mock_report, mock_read, mock_parser, csv_valid
+    ):
+        mock_args = MagicMock()
+        mock_args.files = ["test1.csv"]
+        mock_args.report = "student-performance"
+        mock_parser.return_value.parse_args.return_value = mock_args
+
+        with patch("builtins.open", mock_open(read_data=csv_valid)):
+            csv_data = read_students_results("test_students.csv")
+        mock_read.return_value = csv_data
+
+        main()
+
+        mock_read.assert_called_once()
+        mock_report.assert_called_once_with(csv_data)
