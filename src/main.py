@@ -30,7 +30,7 @@ def main():
             print("Скрипт обрабатывает только CSV-файлы.")
             return
 
-    if args.report == "students-performance":
+    if args.report == "student-performance":
         common_data = []
         for filename in args.files:
             file_path = DATA_FOLDER / filename
@@ -39,7 +39,14 @@ def main():
                 common_data.extend(input_data)
             else:
                 return
-        report_students_performance(common_data)
+        try:
+            report_students_performance(common_data)
+        except ValueError as e:
+            print(f"Ошибка во входных данных: {e}")
+            return
+        except Exception as e:
+            print(f"Неизвестная ошибка: {e}")
+            return
     else:
         print("Проверьте аргументы. Например: '--report students-performance'")
         return
