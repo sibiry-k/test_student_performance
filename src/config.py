@@ -2,6 +2,7 @@ import argparse
 
 
 def config_arg_parser():
+    """Конфигуратор аргументов командной строки."""
     parser = argparse.ArgumentParser(
         prog="poetry run python main.py",
         description=(

@@ -8,6 +8,7 @@ DATA_FOLDER = Path("./data")
 
 
 def read_students_results(filename):
+    """Открываем csv-файл для последующей обработки данных."""
     try:
         with open(filename, newline="", encoding="utf-8") as file:
             csvreader = csv.DictReader(file)
