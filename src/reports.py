@@ -2,6 +2,7 @@ from tabulate import tabulate
 
 
 def report_students_performance(data):
+    """Создает отчет успеваемости студентов, ранжирует и печатает таблицу."""
     table = {}
 
     # Формируем словарь {Студент: список оценок}

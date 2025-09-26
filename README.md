@@ -12,7 +12,8 @@
 3. Установить Poetry:
    ```pip install poetry```
 4. Установить зависимости проекта
-   ```poetry install```  
+   ```poetry install```
+
 
 ## Запуск скрипта
 ```poetry run python src/main.py --files students1.csv students2.csv --report student-performance```
